@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Small Business Hotline — Your One Stop Shop for Everything Your Business Needs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream:   #FAF7F2;
+  --cream2:  #F3EDE3;
+  --dark:    #1a1a2e;
+  --dark2:   #12121F;
+  --green:   #1D9E75;
+  --green-d: #0F6E56;
+  --green-l: #E8F7F1;
+  --warm:    #C8873A;
+  --coral:   #C95B35;
+  --ink:     #2C2C3E;
+  --mid:     #6B6880;
+  --light:   #A8A5B8;
+  --rule:    rgba(44,44,62,0.1);
+  --shadow:  rgba(26,26,46,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── GRAIN TEXTURE ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-decoration: none;
+}
+
+.nav-logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1;
+  letter-spacing: 0.3px;
+}
+
+.nav-logo-sub {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  line-height: 1;
+  margin-top: 3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+  background: var(--dark) !important;
+  color: var(--cream) !important;
+  padding: 9px 20px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--dark2) !important; color: var(--cream) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  padding: 80px 56px 80px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-right {
+  background: var(--dark);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 56px;
+  overflow: hidden;
+}
+
+.hero-right::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(29,158,117,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-right::after {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 320px;
+  color: rgba(255,255,255,0.03);
+  position: absolute;
+  top: -40px;
+  left: 20px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s forwards;
+}
+
+.hero-eyebrow span {
+  display: block;
+  width: 32px;
+  height: 1.5px;
+  background: var(--green);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 5.5vw, 78px);
+  font-weight: 600;
+  line-height: 1.04;
+  color: var(--dark);
+  max-width: 520px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--green);
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--mid);
+  margin-top: 20px;
+  line-height: 1.4;
+  max-width: 400px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.35s forwards;
+}
+
+.hero-divider {
+  width: 48px;
+  height: 1.5px;
+  background: var(--green);
+  margin: 28px 0;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.45s forwards;
+}
+
+.hero-body {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 400px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+
+.hero-cta {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green);
+  color: var(--cream);
+  padding: 16px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  align-self: flex-start;
+  letter-spacing: 0.2px;
+}
+.btn-primary:hover { background: var(--green-d); transform: translateY(-1px); }
+.btn-primary::after { content: '→'; }
+
+.hero-cta-note {
+  font-size: 12px;
+  color: var(--light);
+  font-style: italic;
+}
+
+/* Hero right content */
+.hero-right-quote {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-right-quote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.3;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s forwards;
+}
+
+.hero-right-quote blockquote em {
+  color: var(--green);
+  font-style: italic;
+}
+
+.hero-right-meta {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+}
+
+.hero-right-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.hero-right-value {
+  font-size: 13px;
+  color: rgba(250,247,242,0.5);
+  font-weight: 300;
+}
+
+/* ── PROMISE STRIP ── */
+.promise-strip {
+  background: var(--dark2);
+  padding: 0;
+}
+
+.promise-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.promise-item {
+  padding: 40px 0;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding-right: 40px;
+  padding-left: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.promise-item:first-child { padding-left: 0; }
+.promise-item:last-child { border-right: none; padding-right: 0; }
+
+.promise-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: rgba(29,158,117,0.3);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: -4px;
+}
+
+.promise-text {
+  font-size: 14px;
+  color: rgba(250,247,242,0.65);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.promise-text strong {
+  display: block;
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+/* ── SECTIONS ── */
+.section-light { background: var(--cream); }
+.section-warm  { background: var(--cream2); }
+.section-dark  { background: var(--dark); }
+.section-dark2 { background: var(--dark2); }
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 48px;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--green);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--dark);
+}
+
+.section-title em { font-style: italic; color: var(--green); }
+.section-title.light { color: var(--cream); }
+.section-title.light em { color: var(--green); }
+
+/* ── THE WORLD HAS CHANGED ── */
+.world-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 64px;
+  align-items: start;
+}
+
+.world-left p {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.world-left p strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.world-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.world-card {
+  border: 1px solid var(--rule);
+  padding: 28px 32px;
+  background: var(--cream2);
+  position: relative;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.world-card:hover {
+  border-color: rgba(29,158,117,0.25);
+  transform: translateX(4px);
+}
+
+.world-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--green);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.world-card:hover::before { opacity: 1; }
+
+.world-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.world-card-body {
+  font-size: 13.5px;
+  color: var(--mid);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── FRICTIONLESS FEATURE ── */
+.friction-section { background: var(--dark); }
+
+.friction-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 48px;
+}
+
+.friction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 64px;
+  align-items: center;
+}
+
+.friction-left {
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 48px;
+  position: relative;
+  background: rgba(255,255,255,0.02);
+}
+
+.friction-left::before {
+  content: 'START HERE';
+  position: absolute;
+  top: -1px;
+  left: 32px;
+  background: var(--green);
+  color: var(--cream);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 5px 14px;
+}
+
+.friction-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.friction-logo span { color: var(--green); }
+
+.friction-sub {
+  font-size: 12px;
+  color: rgba(250,247,242,0.4);
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.friction-promise {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--green);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.friction-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.friction-list li {
+  font-size: 13.5px;
+  color: rgba(250,247,242,0.55);
+  display: flex;
+  gap: 10px;
+  line-height: 1.45;
+  font-weight: 300;
+}
+
+.friction-list li::before {
+  content: '→';
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.friction-guarantee {
+  padding: 16px 20px;
+  border: 1px solid rgba(29,158,117,0.3);
+  background: rgba(29,158,117,0.06);
+  font-size: 13px;
+  color: var(--green);
+  font-style: italic;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.friction-guarantee strong {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green);
+  color: var(--cream);
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+  letter-spacing: 0.2px;
+}
+.btn-green:hover { background: var(--green-d); }
+.btn-green::after { content: '→'; }
+
+.friction-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.friction-right p {
+  font-size: 15px;
+  color: rgba(250,247,242,0.55);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.friction-right p strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.friction-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.friction-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.friction-step:last-child { border-bottom: none; }
+
+.friction-step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: rgba(29,158,117,0.4);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+}
+
+.friction-step-content {}
+.friction-step-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 3px;
+}
+.friction-step-body {
+  font-size: 12px;
+  color: rgba(250,247,242,0.4);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ── COLLECTIVE ── */
+.collective-section { background: var(--cream2); }
+
+.collective-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 80px;
+  margin-top: 64px;
+  align-items: start;
+}
+
+.collective-left p {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+.collective-left p strong { color: var(--ink); font-weight: 500; }
+
+.collective-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 40px;
+}
+
+.coll-stat {
+  background: var(--cream);
+  padding: 28px 24px;
+  border: 1px solid var(--rule);
+}
+
+.coll-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+
+.coll-stat-label {
+  font-size: 12px;
+  color: var(--mid);
+  margin-top: 6px;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.collective-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.expertise-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.expertise-item:hover {
+  border-color: rgba(29,158,117,0.25);
+  transform: translateX(4px);
+}
+
+.expertise-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.expertise-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 3px;
+}
+
+.expertise-body {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ── TESTIMONIAL / EDITORIAL ── */
+.editorial-section {
+  background: var(--dark2);
+  padding: 0;
+}
+
+.editorial-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.editorial-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.editorial-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 2.8vw, 38px);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.35;
+}
+
+.editorial-quote em { color: var(--green); font-style: italic; }
+
+/* ── PODCAST & NEWSLETTER ── */
+.content-section { background: var(--cream); }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.content-card {
+  border: 1px solid var(--rule);
+  padding: 40px;
+  background: var(--cream2);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.content-card:hover {
+  border-color: rgba(29,158,117,0.2);
+  transform: translateY(-2px);
+}
+
+.content-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.content-card:hover::after { transform: scaleX(1); }
+
+.content-card-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.content-card-tag::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--green);
+}
+
+.content-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.content-card-body {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 11px 22px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+.btn-outline:hover { background: var(--ink); color: var(--cream); }
+.btn-outline::after { content: '→'; }
+
+/* ── FINAL CTA ── */
+.final-section {
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.final-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 48px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.final-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5.5vw, 68px);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.final-title em { font-style: italic; color: var(--green); }
+
+.final-sub {
+  font-size: 16px;
+  color: rgba(250,247,242,0.45);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 48px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-details {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.final-detail {
+  font-size: 11px;
+  color: rgba(250,247,242,0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.3px;
+}
+.final-detail::before { content: '·'; color: var(--green); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark2);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.footer-brand span { color: var(--green); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: rgba(250,247,242,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--green); }
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(250,247,242,0.2);
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  margin-top: 20px;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 24px; }
+  .hero-right { min-height: 300px; padding: 40px 24px; }
+  .promise-inner { grid-template-columns: 1fr; padding: 0 24px; }
+  .promise-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 28px 0; }
+  .promise-item:last-child { border-bottom: none; }
+  .section-inner { padding: 64px 24px; }
+  .world-grid { grid-template-columns: 1fr; gap: 40px; }
+  .friction-inner { padding: 64px 24px; }
+  .friction-grid { grid-template-columns: 1fr; gap: 40px; }
+  .collective-grid { grid-template-columns: 1fr; gap: 40px; }
+  .editorial-inner { grid-template-columns: 1fr; gap: 24px; }
+  .content-grid { grid-template-columns: 1fr; }
+  .final-inner { padding: 80px 24px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+  .collective-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-main">The Small Business Hotline</div>
+    <div class="nav-logo-sub">Powered by the Escapee Collective</div>
+  </a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#collective">The Collective</a>
+    <a href="https://frictionlessos.ai">FrictionlessOS</a>
+    <a href="https://calendly.com/bttrainor/video-call-with-brett-trainor-the-escapee-collective" class="nav-cta">Book a Free Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span></span>The Small Business Hotline</div>
+    <h1>Running a business is hard. Finding the right help <em>shouldn't be.</em></h1>
+    <p class="hero-tagline">The Small Business Hotline — your one stop shop for everything your business needs.</p>
+    <div class="hero-divider"></div>
+    <p class="hero-body">In a world going fully automated, we're building something different. More human. More trusted. More personal. One partner who gets to know your business — and stays.</p>
+    <div class="hero-cta">
+      <a href="https://calendly.com/bttrainor/video-call-with-brett-trainor-the-escapee-collective" class="btn-primary">Book a Free 20-Min Call</a>
+      <span class="hero-cta-note">No pitch. No obligation. Just a real conversation.</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-quote">
+      <blockquote>"She told me she needed to have this conversation <em>before</em> she made all those hires.<br>That's exactly why we exist."</blockquote>
+      <div class="hero-right-meta">
+        <div class="hero-right-label">The problem we solve</div>
+        <div class="hero-right-value">Business owners making expensive decisions alone — without a trusted partner in their corner.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE STRIP -->
+<div class="promise-strip">
+  <div class="promise-inner">
+    <div class="promise-item reveal">
+      <div class="promise-num">01</div>
+      <div class="promise-text">
+        <strong>We get to know your business.</strong>
+        Not as a vendor. As a partner. We learn how you operate, where you're growing, and where you're stuck.
+      </div>
+    </div>
+    <div class="promise-item reveal" style="transition-delay:0.1s;">
+      <div class="promise-num">02</div>
+      <div class="promise-text">
+        <strong>We bring the right resource.</strong>
+        Human or AI — we know who to call. You never have to source, vet, or manage a specialist again.
+      </div>
+    </div>
+    <div class="promise-item reveal" style="transition-delay:0.2s;">
+      <div class="promise-num">03</div>
+      <div class="promise-text">
+        <strong>We never sell you something you don't need.</strong>
+        If it doesn't move your business forward, we won't recommend it. Full stop.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE WORLD HAS CHANGED -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="section-label">Why this exists</div>
+    <h2 class="section-title reveal">The world is getting <em>more digital.</em><br>We're going more human.</h2>
+    <div class="world-grid">
+      <div class="world-left reveal" style="transition-delay:0.1s;">
+        <p>Every week another tool promises to transform your business. Every week another consultant sells you a framework. Every week the noise gets louder and the results get harder to see.</p>
+        <p><strong>Most business owners have never felt more alone.</strong> Surrounded by software, subscriptions, and AI promises — but without a single trusted person who actually knows their business.</p>
+        <p>We believe that as the world automates, <strong>human connection and trusted relationships become more valuable, not less.</strong> The businesses that win won't be the ones with the best tech stack. They'll be the ones with the right partner in their corner.</p>
+        <p>That's what the Small Business Hotline is built to be.</p>
+      </div>
+      <div class="world-right reveal" style="transition-delay:0.2s;">
+        <div class="world-card">
+          <div class="world-card-title">The old way</div>
+          <div class="world-card-body">Hire a consultant. Get a deck. Try to implement it yourself. Hire the wrong person. Buy software you don't use. Start over. Most business owners have been through this cycle more than once.</div>
+        </div>
+        <div class="world-card">
+          <div class="world-card-title">The new way</div>
+          <div class="world-card-body">One call. One partner who already knows your business. The right expert — human or AI — deployed at exactly the right moment. No sourcing. No vetting. No managing. Just results.</div>
+        </div>
+        <div class="world-card" style="border-color:rgba(29,158,117,0.25);background:rgba(29,158,117,0.04);">
+          <div class="world-card-title" style="color:var(--green);">The SBH difference</div>
+          <div class="world-card-body">We don't just give advice. We stay. We get to know your business over time and show up every time you need us — whether that's AI implementation, a fractional CFO, or a 20-minute conversation about your next hire.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRICTIONLESS OS FEATURE -->
+<section class="friction-section" id="how">
+  <div class="friction-inner">
+    <div class="section-label" style="color:var(--green);">Start here</div>
+    <h2 class="section-title light reveal">Every business owner starts<br>with <em>FrictionlessOS.</em></h2>
+    <div class="friction-grid">
+      <div class="friction-left reveal" style="transition-delay:0.15s;">
+        <div class="friction-logo">Frictionless<span>OS</span>.ai</div>
+        <div class="friction-sub">The foundation for every SBH engagement</div>
+        <div class="friction-promise">"5 hours back this week — or you don't pay."</div>
+        <ul class="friction-list">
+          <li>A 45-minute working session that maps your entire business</li>
+          <li>Custom AI implementation plan delivered within 48 hours</li>
+          <li>Specific tools, specific steps, specific savings</li>
+          <li>The complete picture that makes every next conversation smarter</li>
+        </ul>
+        <div class="friction-guarantee">
+          <strong>Our guarantee:</strong> You get 5 hours back per week from our recommendations — or we don't charge you. That's how confident we are in what we find.
+        </div>
+        <a href="https://frictionlessos.ai" class="btn-green">Learn More at FrictionlessOS.ai</a>
+      </div>
+      <div class="friction-right reveal" style="transition-delay:0.25s;">
+        <p>FrictionlessOS.ai is the fastest way to experience what the SBH can do for your business. It solves the most immediate problem every business owner is feeling right now — <strong>AI is everywhere but nobody has shown you how it fits your specific operation.</strong></p>
+        <p>More importantly, it gives us a complete picture of your business before anything else happens. <strong>That picture is the foundation of the entire SBH relationship.</strong> Every conversation after is smarter because of it.</p>
+        <div class="friction-steps">
+          <div class="friction-step">
+            <div class="friction-step-num">1</div>
+            <div class="friction-step-content">
+              <div class="friction-step-title">Free 20-min fit call</div>
+              <div class="friction-step-body">We make sure this is right for your business before you invest anything.</div>
+            </div>
+          </div>
+          <div class="friction-step">
+            <div class="friction-step-num">2</div>
+            <div class="friction-step-content">
+              <div class="friction-step-title">45-minute working session — $1,000</div>
+              <div class="friction-step-body">The conversation that feeds your custom plan. No prep required.</div>
+            </div>
+          </div>
+          <div class="friction-step">
+            <div class="friction-step-num">3</div>
+            <div class="friction-step-content">
+              <div class="friction-step-title">Custom plan within 48 hours</div>
+              <div class="friction-step-body">Specific AI recommendations built around your actual business. Actionable immediately.</div>
+            </div>
+          </div>
+          <div class="friction-step">
+            <div class="friction-step-num">4</div>
+            <div class="friction-step-content">
+              <div class="friction-step-title">The SBH relationship begins</div>
+              <div class="friction-step-body">We now know your business. Everything after is faster, smarter, and more valuable.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:24px;">
+          <a href="https://calendly.com/bttrainor/video-call-with-brett-trainor-the-escapee-collective" class="btn-green">Book Your Free Fit Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL BREAK -->
+<div class="editorial-section">
+  <div class="editorial-inner reveal">
+    <div class="editorial-label">The belief behind everything</div>
+    <div class="editorial-quote">"AI amplifies a working model.<br>It doesn't fix a <em>broken one.</em>"</div>
+  </div>
+</div>
+
+<!-- THE COLLECTIVE -->
+<section class="collective-section" id="collective">
+  <div class="section-inner">
+    <div class="section-label">Powered by</div>
+    <h2 class="section-title reveal">The Escapee Collective.<br><em>Your expert network, already built.</em></h2>
+    <div class="collective-grid">
+      <div class="collective-left reveal" style="transition-delay:0.1s;">
+        <p>The Escapee Collective is the cornerstone of everything the SBH does. It's a community of former corporate executives and operators — people who spent decades inside the Fortune 500 learning what actually works, then left to help businesses like yours grow.</p>
+        <p><strong>When you need a specialist, we already have one.</strong> You don't have to post a job, run interviews, or manage a vendor. We know who's right for your situation, and we bring them in exactly when you need them.</p>
+        <p>That's the difference between hiring a consultant and having a partner who already has the right network. <strong>We never sell you expertise you don't need.</strong> But when you need it, it's already there.</p>
+        <div class="collective-stats">
+          <div class="coll-stat">
+            <div class="coll-stat-num">375</div>
+            <div class="coll-stat-label">Decades of combined real-world business experience</div>
+          </div>
+          <div class="coll-stat">
+            <div class="coll-stat-num">25+</div>
+            <div class="coll-stat-label">Years average experience per Collective member</div>
+          </div>
+          <div class="coll-stat">
+            <div class="coll-stat-num">150+</div>
+            <div class="coll-stat-label">Former corporate operators in the network</div>
+          </div>
+          <div class="coll-stat">
+            <div class="coll-stat-num">$0</div>
+            <div class="coll-stat-label">Cost to source, vet, or manage your specialist</div>
+          </div>
+        </div>
+      </div>
+      <div class="collective-right reveal" style="transition-delay:0.2s;">
+        <div class="expertise-item">
+          <div class="expertise-icon">📈</div>
+          <div>
+            <div class="expertise-title">Sales & Revenue Growth</div>
+            <div class="expertise-body">Sales process design, pipeline management, fractional sales leadership, compensation structure.</div>
+          </div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-icon">📣</div>
+          <div>
+            <div class="expertise-title">Marketing & Demand Generation</div>
+            <div class="expertise-body">Brand strategy, content, digital marketing, fractional CMO, lead generation.</div>
+          </div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-icon">💰</div>
+          <div>
+            <div class="expertise-title">Finance & Operations</div>
+            <div class="expertise-body">Fractional CFO, financial modeling, cash flow, operational efficiency, process design.</div>
+          </div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-icon">🤖</div>
+          <div>
+            <div class="expertise-title">AI & Technology</div>
+            <div class="expertise-body">AI implementation, tech stack audit, automation design, data readiness, tool selection.</div>
+          </div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-icon">🤝</div>
+          <div>
+            <div class="expertise-title">Customer Success & Retention</div>
+            <div class="expertise-body">Onboarding design, churn prevention, expansion strategy, customer experience.</div>
+          </div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-icon">⚖️</div>
+          <div>
+            <div class="expertise-title">HR, Legal & Compliance</div>
+            <div class="expertise-body">Hiring strategy, people ops, fractional HR, legal guidance, compliance frameworks.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PODCAST & NEWSLETTER -->
+<section class="content-section">
+  <div class="section-inner">
+    <div class="section-label">Stay connected</div>
+    <h2 class="section-title reveal">The conversation <em>continues.</em></h2>
+    <div class="content-grid reveal" style="transition-delay:0.15s;">
+      <div class="content-card">
+        <div class="content-card-tag">Podcast</div>
+        <div class="content-card-title">The Small Business Hotline Podcast</div>
+        <div class="content-card-body">Short, practical conversations for business owners who are done figuring it out alone. Real operators. Real problems. Real answers. Available on Spotify and Apple Podcasts.</div>
+        <a href="#" class="btn-outline">Listen Now</a>
+      </div>
+      <div class="content-card">
+        <div class="content-card-tag">Newsletter</div>
+        <div class="content-card-title">The SBH on Substack</div>
+        <div class="content-card-body">Biweekly. One insight about the modern business operating model. One practical AI or flex staffing tip. One thing worth knowing from the Collective. Four minutes. Done.</div>
+        <a href="#" class="btn-outline">Subscribe Free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-section">
+  <div class="final-inner">
+    <h2 class="final-title reveal">Ready to have a<br><em>real conversation?</em></h2>
+    <p class="final-sub reveal" style="transition-delay:0.15s;">Twenty minutes. No pitch. No obligation. Just an honest conversation about your business — and whether the SBH is the right fit for where you're going.</p>
+    <a href="https://calendly.com/bttrainor/video-call-with-brett-trainor-the-escapee-collective" class="btn-primary reveal" style="transition-delay:0.25s;font-size:15px;padding:18px 40px;margin:0 auto;">Book Your Free 20-Min Call</a>
+    <div class="final-details reveal" style="transition-delay:0.35s;">
+      <span class="final-detail">Free, no obligation</span>
+      <span class="final-detail">20 minutes</span>
+      <span class="final-detail">Real conversation</span>
+      <span class="final-detail">You decide what's next</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">The Small Business <span>Hotline</span></div>
+    <div class="footer-links">
+      <a href="https://frictionlessos.ai">FrictionlessOS.ai</a>
+      <a href="https://thecorporateescapee.com">The Corporate Escapee</a>
+      <a href="https://linkedin.com/company/the-small-business-hotline">LinkedIn</a>
+      <a href="https://calendly.com/bttrainor/video-call-with-brett-trainor-the-escapee-collective">Book a Call</a>
+    </div>
+    <div class="footer-copy">© 2026 The Small Business Hotline · Powered by the Escapee Collective · thesmallbusinesshotline.com</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
